@@ -4,7 +4,7 @@ import Igis
 
 import Foundation 
 
-class Sun : RenderableEntity {
+class Sun : RenderableEntity : EntityMouseClickHandler {
    
     var ellipse = Ellipse(center:Point(x:0, y:0), radiusX:45, radiusY:45, fillMode:.fillAndStroke)
     let strokeStyle = StrokeStyle(color:Color(.orange))
