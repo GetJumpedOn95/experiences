@@ -35,7 +35,7 @@ func onEntityMouseClick(globalLocation: Point) {
    
    override func teardown() {
     //dispatcher.unregisterEntityMouseClickHandler(handler:self)
-    dispatcher.unregisterMouseMoveHandler(handler:self)
+    dispatcher.unregisterEntityMouseClickHandler(handler:self)
 }
 
 override func boundingRect() -> Rect {
