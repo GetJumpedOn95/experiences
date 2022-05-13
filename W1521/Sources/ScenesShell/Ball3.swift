@@ -4,12 +4,12 @@ import Igis
 
 import Foundation 
 
-class Ball : RenderableEntity, MouseMoveHandler {
+class Ball3 : RenderableEntity {
    
-    var ellipse = Ellipse(center:Point(x:0, y:0), radiusX:30, radiusY:30, fillMode:.fillAndStroke)
-    let strokeStyle = StrokeStyle(color:Color(.orange))
-    let fillStyle = FillStyle(color:Color(.red))
-    let lineWidth = LineWidth(width:5)
+    var ellipse = Ellipse(center:Point(x:120, y:250), radiusX:30, radiusY:30, fillMode:.fillAndStroke)
+    let strokeStyle = StrokeStyle(color:Color(.blue))
+    let fillStyle = FillStyle(color:Color(.green))
+    let lineWidth = LineWidth(width:8)
     var velocityX = 0
     var velocityY = 0
     var origVelX = 5
@@ -17,16 +17,16 @@ class Ball : RenderableEntity, MouseMoveHandler {
 
 init() {
     // Using a meaningful name can be helpful for debugging
-    super.init(name:"Ball")
+    super.init(name:"Ball2")
 }
 
 override func setup(canvasSize: Size, canvas: Canvas) {
     // Position the ellipse at the center of the canvas
     ellipse.center = canvasSize.center
   //  dispatcher.registerEntityMouseClickHandler(handler:self)
-    dispatcher.registerMouseMoveHandler(handler:self)
+//    dispatcher.registerMouseMoveHandler(handler:self)
 }
-
+/*
 override func teardown() {
     //dispatcher.unregisterEntityMouseClickHandler(handler:self)
     dispatcher.unregisterMouseMoveHandler(handler:self)
@@ -41,6 +41,11 @@ func onMouseMove(globalLocation: Point, movement: Point) {
     origVelX = velocityX
     origVelY = velocityY
 }
+*/    
+    override func render(canvas:Canvas) {
+        canvas.render(strokeStyle, fillStyle, lineWidth, ellipse)
+    }
+
 
 override func boundingRect() -> Rect {
     return Rect(size: Size(width: Int.max, height: Int.max))
@@ -72,20 +77,20 @@ override func calculate(canvasSize: Size) {
         ellipse.radiusY = ellipse.radiusY + 2
     }
 
-    if(abs(self.velocityY) > abs(origVelY)) {
+/*    if(abs(self.velocityY) > abs(origVelY)) {
        if(self.velocityY < 0) {
-//          print("Adding velocity")
+          print("Adding velocity")
           self.velocityY = self.velocityY + 1
-  //        print("new velocity = " + String(self.velocityY))
+          print("new velocity = " + String(self.velocityY))
        }else {
-    //       print("sub velocity")
+           print("sub velocity")
            self.velocityY = self.velocityY - 1
-      //     print("new velocity = " + String(self.velocityY))
+           print("new velocity = " + String(self.velocityY))
        }
     }
 
     
-     
+  */   
 
     // First, move to the new position
     ellipse.center += Point(x:velocityX, y:velocityY)
@@ -108,7 +113,7 @@ override func calculate(canvasSize: Size) {
 
       // If we're too far to the left or right, we bounce the x velocity
       if tooFarLeft || tooFarRight {
-          velocityX = -velocityX * 2
+          velocityX = -velocityX 
           ellipse.radiusX = 10 
     }
 
@@ -116,13 +121,13 @@ override func calculate(canvasSize: Size) {
       if tooFarUp || tooFarDown {
           ellipse.radiusY = 10   
           //changeVelocity(velocityX:velocityX, velocityY:-velocityY * 2)
-          velocityY = -velocityY * 2
+          velocityY = -velocityY 
       }
 }
 
 
 
-
+/*
 override func render(canvas:Canvas) {
     if let canvasSize = canvas.canvasSize {
   //  let clearRect = Rect(topLeft:Point(x:0, y:0), size:canvasSize)
@@ -223,5 +228,7 @@ func drawShape(n:Double, turtle:Turtle, color: Color, width: Int) {
     }
     
 
-} 
+    }
+    
+ */
 }

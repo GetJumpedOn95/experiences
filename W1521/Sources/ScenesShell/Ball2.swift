@@ -41,11 +41,12 @@ func onMouseMove(globalLocation: Point, movement: Point) {
     origVelX = velocityX
     origVelY = velocityY
 }
+*/    
     override func render(canvas:Canvas) {
+        canvas.render(strokeStyle, fillStyle, lineWidth, ellipse)
     }
 
 
- */
 override func boundingRect() -> Rect {
     return Rect(size: Size(width: Int.max, height: Int.max))
 }

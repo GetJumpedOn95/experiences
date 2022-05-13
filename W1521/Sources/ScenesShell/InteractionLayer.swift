@@ -8,9 +8,15 @@ import Igis
 
 class InteractionLayer : Layer, KeyDownHandler {
     let ball = Ball()
+    let ball1 = Ball2()
+    let ball2 = Ball2()
+    let ball3 = Ball2()
+    let ball4 = Ball2()
+    let ball5 = Ball3()
+    let ball6 = Ball4()
     let paddleLeft = Paddle(rect:Rect(size:Size(width:10, height:100)))
     let paddleRight = Paddle(rect:Rect(size:Size(width:10, height:100)))
-    let sun = Sun()
+    //let sun = Sun()
     var defaultCanvasSize = Size() 
     
     init() {
@@ -20,12 +26,23 @@ class InteractionLayer : Layer, KeyDownHandler {
         // We insert our RenderableEntities in the constructor
 //        remove(entity:ball)
         insert(entity: ball, at: .front)
+        insert(entity: ball1, at: .front)
+        insert(entity: ball2, at: .front)
+        insert(entity: ball3, at: .front)
+        insert(entity: ball4, at: .front)
+        insert(entity: ball5, at: .front) 
+        insert(entity: ball6, at: .front)
         ball.changeVelocity(velocityX: 5, velocityY: 8)  
-
+        ball1.changeVelocity(velocityX: 3, velocityY: 1)
+        ball2.changeVelocity(velocityX: 1, velocityY: 2)
+        ball3.changeVelocity(velocityX: 8, velocityY: 5)
+        ball4.changeVelocity(velocityX: 2, velocityY: 1)
+        ball6.changeVelocity(velocityX: 7, velocityY: 8) 
+        ball5.changeVelocity(velocityX: 2, velocityY: 1)
         insert(entity: paddleLeft, at: .front)
         insert(entity: paddleRight, at: .front)
-        insert(entity: sun, at: .front)
-        sun.changeVelocity(velocityX: 5, velocityY: 8)
+//        insert(entity: sun, at: .front)
+        //sun.changeVelocity(velocityX: 5, velocityY: 8)
     }
 
     func onKeyDown(key:String, code:String, ctrlKey:Bool, shiftKey:Bool, altKey:Bool, metaKey:Bool) {

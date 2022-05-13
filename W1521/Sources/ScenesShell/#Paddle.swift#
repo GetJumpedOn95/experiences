@@ -14,7 +14,12 @@ class Paddle: RenderableEntity {
 
     override func render(canvas:Canvas) {
         let strokeStyle = StrokeStyle(color:Color(.black))
-        let fillStyle = FillStyle(color:Color(.white))
+        override func render(canvas:Canvas) {                                                                         |
+                                                                                                                        let strokeStyle = StrokeStyle(color:Color(.black))                                                        |
+                                                                                                                        let fillStyle = FillStyle(color:Color(.white))                                                            |
+                                                                                                                        let lineWidth = LineWidth(width:2)                                                                        |
+                                                                                                                        canvas.render(strokeStyle, fillStyle, lineWidth, rectangle)                                               |
+        }                     let fillStyle = FillStyle(color:Color(.white))
         let lineWidth = LineWidth(width:2)
         canvas.render(strokeStyle, fillStyle, lineWidth, rectangle)
     }
@@ -22,7 +27,7 @@ class Paddle: RenderableEntity {
     func move(to point:Point) {
         rectangle.rect.topLeft = point
     }
-      
+
     func moveDown(canvasSize:Size) {
        //Save existing points
      
