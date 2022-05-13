@@ -1,0 +1,92 @@
+import Scenes
+import Igis
+
+  /*
+     This class is responsible for rendering the background.
+   */
+
+
+class Background : RenderableEntity {
+
+    var rectangle : Rectangle
+    var rect : Rect
+    var rectangles = [Rectangle]()
+    let horizontal = 7
+    let vertical = 7
+    let per_width = 200
+    let per_height = 50
+    let startX = 20
+    let startY = 20 
+    let lines : Lines
+    let lineWidth = LineWidth(width:3)
+    let ellipse : Ellipse
+    let eye : Ellipse
+    init() {
+
+        //start
+        var x_axis = startX
+        var y_axis = startY + vertical * per_height + 100
+
+        var i = 0
+        repeat {
+    
+           
+      
+            var j = 0          
+            repeat {
+              
+                rect = Rect(topLeft:Point(x:x_axis, y:y_axis), size:Size(width:per_width,height:per_height))
+                rectangle = Rectangle(rect:rect, fillMode:.stroke)
+                rectangles.append(rectangle)
+                print("adding x_axis = \(x_axis) y = \(y_axis)")
+                j = j + 1
+                x_axis = x_axis + per_width
+            } while j < horizontal - i 
+        
+         
+             i = i + 1
+            x_axis = startX + i * per_width/2
+          
+            
+            y_axis = y_axis - per_height
+           // if(i == vertical - 2) {
+           //     y_axis = y_axis - 100
+           // }
+           // print("i =  \(i) and x_axis = \(x_axis) y = \(y_axis)") 
+          
+        }  while i < vertical - 1 
+
+
+   
+
+        //let blue = StrokeStyle(color:Color(red:100, green:100, blue:255))
+        //canvas.render(blue)
+
+        lines = Lines(from:Point(x:720, y:20), to:Point(x:870, y:200))
+        lines.lineTo(Point(x:570, y:200))
+        lines.lineTo(Point(x:720, y:20))
+        ellipse = Ellipse(center:Point(x:720, y:120), radiusX:70, radiusY:30)
+        eye = Ellipse (center:Point(x:720, y:120), radiusX:15, radiusY:15) 
+
+        // Using a meaningful name can be helpful for debugging
+
+
+        super.init(name:"Background")
+    }
+    
+    override func setup(canvasSize:Size, canvas:Canvas) {
+
+
+        
+        print("size = \(rectangles)")
+        for myRectangle in rectangles {
+
+            canvas.render(myRectangle)
+        }
+        canvas.render(lineWidth)
+        canvas.render(lines)
+        
+        canvas.render(ellipse)
+        canvas.render(eye) 
+}
+}

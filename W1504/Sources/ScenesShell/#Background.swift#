@@ -1,0 +1,96 @@
+import Foundation
+import Scenes
+import Igis
+
+  /*
+     This class is responsible for rendering the background.
+   */
+
+
+class Background : RenderableEntity {
+
+    var outerPath = Path()
+    var innerPath = Path()
+    var pupil = Ellipse(center:Point(x:500, y:340), radiusX:4, radiusY:4, fillMode:.fill)
+    var lashes = Path()
+    override func setup(canvasSize:Size, canvas:Canvas) {      
+    init() {
+        super.init(name:"Background")
+    }
+    
+    override func setup(canvasSize:Size, canvas:Canvas) {
+        let leftEye = Point(x:500, y:340)
+        setupEye(point:leftEye)
+
+        //Render outerPath
+        let outerFillColor = FillStyle(color:Color(.seashell))
+        let outerLineWidth = LineWidth(width:2)
+        canvas.render(outerFillColor, outerLineWidth, outerPath)
+
+        //Render innerPath
+        let innerFillColor = FillStyle(color:Color(.royalblue))
+        let innerLineWidth = LineWidth(width:1)
+        canvas.render(innerFillColor, innerLineWidth, innerPath)
+
+        //Render pupil
+        let pupilFillColor = FillStyle(color:Color(.black))
+        canvas.render(pupilFillColor, pupil)
+
+        //Render lashes
+        var lashesStrokeColor = StrokeStyle(color:Color(.brown))
+        let lashesWidth = LineWidth(width:2)
+        canvas.render(lashesStrokeColor, lashesWidth, lashes)
+
+        //Setup right eye
+        let rightEye = Point(x:750, y:340)
+        setupEye(point:rightEye)
+        canvas.render(outerFillColor, StrokeStyle(color:Color(.black)),  outerLineWidth, outerPath)
+        canvas.render(innerFillColor, StrokeStyle(color:Color(.black)), innerLineWidth, innerPath)
+        canvas.render(pupilFillColor, StrokeStyle(color:Color(.black)),  pupil)
+        lashesStrokeColor = StrokeStyle(color:Color(.brown)) 
+        canvas.render(lashesStrokeColor, lashesWidth, lashes) 
+    }
+    
+    func setupEye(point:Point) { 
+//500,340
+        outerPath = Path(fillMode:.fillAndStroke)
+        outerPath.arc(center:Point(x:point.x,y:point.y + 60), radius:100, startAngle:1.2*Double.pi, endAngle:1.8*Double.pi)
+        outerPath.arc(center:Point(x:point.x, y:point.y - 57), radius:100, startAngle:0.2*Double.pi, endAngle:0.8*Double.pi)
+
+        innerPath = Path(fillMode:.fillAndStroke)
+        innerPath.arc(center:Point(x:point.x, y:point.y), radius:15)
+        pupil = Ellipse(center:Point(x:point.x, y:point.y), radiusX:4, radiusY:4, fillMode:.fill)
+
+        //Reset lashes
+        lashes = Path()
+        lashes.moveTo(Point(x:point.x - 85, y:point.y - 15))
+        lashes.lineTo(Point(x:point.x - 105, y:point.y - 35))
+
+        lashes.moveTo(Point(x:point.x - 60, y:point.y - 30))
+        lashes.lineTo(Point(x:point.x - 85, y:point.y - 52))
+        
+        lashes.moveTo(Point(x:point.x - 35, y:point.y - 45))
+        lashes.lineTo(Point(x:point.x - 55, y:point.y - 67))
+
+        //4
+        lashes.moveTo(Point(x:point.x - 10, y:point.y - 50)) 
+        lashes.lineTo(Point(x:point.x - 15, y:point.y - 80))
+
+        //5
+        lashes.moveTo(Point(x:point.x + 10, y:point.y - 50))
+        lashes.lineTo(Point(x:point.x + 15, y:point.y - 80))
+
+        //6
+        lashes.moveTo(Point(x:point.x + 35, y:point.y - 45))
+        lashes.lineTo(Point(x:point.x + 55, y:point.y - 67))
+
+        //7
+        lashes.moveTo(Point(x:point.x + 60, y:point.y - 30))
+        lashes.lineTo(Point(x:point.x + 85, y:point.y - 52))
+
+        //8
+        lashes.moveTo(Point(x:point.x + 85, y:point.y - 15))
+        lashes.lineTo(Point(x:point.x + 105, y:point.y - 35)) 
+    }
+          
+}

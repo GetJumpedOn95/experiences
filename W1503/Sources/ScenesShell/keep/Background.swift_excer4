@@ -1,0 +1,66 @@
+import Scenes
+import Igis
+
+  /*
+     This class is responsible for rendering the background.
+   */
+
+
+class Background : RenderableEntity {
+
+    var rectangle : Rectangle
+    var rect : Rect
+    var rectangles = [Rectangle]()
+    let horizontal = 7
+    let vertical = 7
+    let per_width = 200
+    let per_height = 50
+    let startX = 20
+    let startY = 20 
+    init() {
+
+        //start
+        var x_axis = startX
+        var y_axis = startY + vertical * per_height
+
+        var i = 0
+        repeat {
+    
+           
+      
+            var j = 0          
+            repeat {
+              
+                rect = Rect(topLeft:Point(x:x_axis, y:y_axis), size:Size(width:per_width,height:per_height))
+                rectangle = Rectangle(rect:rect, fillMode:.stroke)
+                rectangles.append(rectangle)
+                print("adding x_axis = \(x_axis) y = \(y_axis)")
+                j = j + 1
+                x_axis = x_axis + per_width
+            } while j < horizontal - i 
+        
+         
+             i = i + 1
+            x_axis = startX + i * per_width/2
+          
+            
+            y_axis = y_axis - per_height 
+            print("i =  \(i) and x_axis = \(x_axis) y = \(y_axis)") 
+          
+        }  while i < vertical 
+             
+          // Using a meaningful name can be helpful for debugging
+          super.init(name:"Background")
+    }
+    
+    override func setup(canvasSize:Size, canvas:Canvas) {
+
+
+        
+        print("size = \(rectangles)")
+        for myRectangle in rectangles {
+
+            canvas.render(myRectangle)
+        }
+}
+}

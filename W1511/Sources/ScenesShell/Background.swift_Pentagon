@@ -1,0 +1,36 @@
+import Scenes
+import Igis
+
+  /*
+     This class is responsible for rendering the background.
+   */
+
+
+class Background : RenderableEntity {
+ var didDraw = false
+      init() {
+             super.init(name:"Background")
+      }
+
+      override func render(canvas:Canvas) {
+          if let canvasSize = canvas.canvasSize, !didDraw {
+
+              let turtle = Turtle(canvasSize:canvasSize)
+              turtle.forward(steps:50)
+              turtle.right(degrees:72)
+              turtle.forward(steps:50)
+              turtle.right(degrees:72)
+              turtle.forward(steps:50)
+              turtle.right(degrees:72)
+              turtle.forward(steps:50)
+              turtle.right(degrees:72)
+              turtle.forward(steps:50)
+               
+              canvas.render(turtle)
+
+              didDraw = true
+          }
+      }
+
+      
+}

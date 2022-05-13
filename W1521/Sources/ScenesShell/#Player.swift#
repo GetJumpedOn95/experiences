@@ -1,0 +1,47 @@
+import Igis
+import Scenes
+
+class Player: RenderableEntity {
+    var rectangle: Rectangle
+    var defaultMove = 200
+    var vertical = 7
+    var horiztonal = 10
+    let fillStyle = FillStyle(color:Color(.brown))
+    let fillStyle2 = FillStyle(color:Color(.orange))
+    let fillStyle3 = FillStyle(color:Color(.chocolate))
+    let fillStyle4 = FillStyle(color:Color(.gold))
+    let fillStyle5 = FillStyle(color:Color(.darkgreen))
+    let outline = StrokeStyle(color:Color(.black))
+    var colors = [FillStyle]()
+    
+    init(rect:Rect) {
+        rectangle = Rectangle(rect:rect, fillMode:.fillAndStroke)
+
+        // Using a meaningful name can be helpful for debugging
+        super.init(name: "Player")
+    }
+
+    override func render(canvas:Canvas) {
+        let strokeStyle = StrokeStyle(color:Color(.black))
+        let fillStyle = FillStyle(color:Color(.white))
+        let lineWidth = LineWidth(width:2)
+        canvas.render(strokeStyle, fillStyle, lineWidth, rectangle)
+    }
+
+    func move(to point:Point) {
+        rectangle.rect.topLeft = point
+    }
+
+    func startOver(canvasSize:Size) {
+        var point = Point(x:50, y:50)
+        rectangle.rect.topLeft = point
+    }
+
+    func moveForward(playerPosition:Int, canvasSize:Size) {
+        //if playerPostition is < vertical moveDown
+        if(playerPosition <= vertical ) {
+            moveDown(canvasSize:canvasSize)
+        //else if playerPosition   
+  
+    
+}

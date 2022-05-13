@@ -1,0 +1,36 @@
+import Scenes
+import Igis
+
+  /*
+     This class is responsible for rendering the background.
+   */
+
+
+class Background : RenderableEntity {
+    override func setup(canvasSize:Size, canvas:Canvas) {
+        let rect = Rect(topLeft:Point(x:100, y:50), size:Size(width:200, height:300))
+      //  let rectangle = Rectangle(rect:rect)
+      //  let fillStyle = FillStyle(color:Color(.blue))
+      //  canvas.render(fillStyle, rectangle)
+        let rectangle = Rectangle(rect:rect, fillMode:.stroke)
+        let strokeStyle = StrokeStyle(color:Color(.green))
+        //canvas.render(strokeStyle, rectangle)
+        let lineWidth = LineWidth(width:5)
+        canvas.render(strokeStyle, lineWidth, rectangle)
+    }
+
+    
+      init() {
+          override func setup(canvasSize:Size, canvas:Canvas) {
+              let rect = Rect(topLeft:Point(x:100, y:50), size:Size(width:200, height:300))
+              let rectangle = Rectangle(rect:rect, fillMode:.fillAndStroke)
+              let fillStyle = FillStyle(color:Color(.green))
+              let strokeStyle = StrokeStyle(color:Color(.blue))
+              let lineWidth = LineWidth(width:5)
+              canvas.render(fillStyle, strokeStyle, lineWidth, rectangle)
+          }
+          // Using a meaningful name can be helpful for debugging
+          super.init(name:"Background")
+      }
+     
+}
