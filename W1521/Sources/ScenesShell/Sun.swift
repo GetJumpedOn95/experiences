@@ -22,7 +22,7 @@ init() {
 
 override func setup(canvasSize: Size, canvas: Canvas) {
     // Position the ellipse at the center of the canvas
-    var point = Point(x:canvasSize.width, y:0)
+    var point = Point(x:canvasSize.width - 100, y:0)
    // rectangle.rect.topLeft = point
     ellipse.center = point
     dispatcher.registerEntityMouseClickHandler(handler:self)
