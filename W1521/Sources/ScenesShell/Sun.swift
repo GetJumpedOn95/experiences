@@ -6,7 +6,7 @@ import Foundation
 
 class Sun : RenderableEntity {
    
-    var ellipse = Ellipse(center:Point(x:0, y:0), radiusX:30, radiusY:30, fillMode:.fillAndStroke)
+    var ellipse = Ellipse(center:Point(x:0, y:0), radiusX:45, radiusY:45, fillMode:.fillAndStroke)
     let strokeStyle = StrokeStyle(color:Color(.orange))
     let fillStyle = FillStyle(color:Color(.yellow))
     let lineWidth = LineWidth(width:5)
@@ -25,13 +25,18 @@ override func setup(canvasSize: Size, canvas: Canvas) {
     var point = Point(x:canvasSize.width, y:0)
    // rectangle.rect.topLeft = point
     ellipse.center = point
-  //  dispatcher.registerEntityMouseClickHandler(handler:self)
+    dispatcher.registerEntityMouseClickHandler(handler:self)
    // dispatcher.registerMouseMoveHandler(handler:self)
 }
 
-//func onEntityMouseClick(globalLocation: Point) {
-//    ellipse.center = globalLocation
-//}
+func onEntityMouseClick(globalLocation: Point) {
+    ellipse.center = globalLocation
+}
+   
+   override func teardown() {
+    //dispatcher.unregisterEntityMouseClickHandler(handler:self)
+    dispatcher.unregisterMouseMoveHandler(handler:self)
+}
 
 override func boundingRect() -> Rect {
     return Rect(size: Size(width: 100, height: 100))
@@ -83,7 +88,7 @@ override func calculate(canvasSize: Size) {
 
     // Form a bounding rectangle around the canvas
     var size = Size(width:100, height:100)
-    let canvasBoundingRect = Rect(topLeft:Point(x:canvasSize.width-100, y:0), size:Size(width:100, height:100))
+    let canvasBoundingRect = Rect(topRight:Point(x:canvasSize.width-100, y:0), size:Size(width:100, height:100))
     // Form a bounding rect around the ball (ellipse)
     let ballBoundingRect = Rect(topLeft:Point(x:ellipse.center.x-ellipse.radiusX, y:ellipse.center.y-ellipse.radiusY),
                                 size:Size(width:ellipse.radiusX*2, height:ellipse.radiusY*2))
@@ -99,15 +104,12 @@ override func calculate(canvasSize: Size) {
 
       // If we're too far to the left or right, we bounce the x velocity
       if tooFarLeft || tooFarRight {
-          velocityX = -velocityX * 2
-          ellipse.radiusX = 10 
+          velocityX = -velocityX 
     }
 
     // If we're too far to the top or bottom, we bound the y velocity
       if tooFarUp || tooFarDown {
-          ellipse.radiusY = 10   
-          //changeVelocity(velocityX:velocityX, velocityY:-velocityY * 2)
-          velocityY = -velocityY * 2
+          velocityY = -velocityY
       }
 }
 
