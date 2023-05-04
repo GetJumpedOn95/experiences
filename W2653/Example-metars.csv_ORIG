@@ -1,3 +1,9 @@
+No errors
+Max results hit (1000): not all possible results returned; 
+96 ms
+data source=metars
+1000 results
+raw_text,station_id,observation_time,latitude,longitude,temp_c,dewpoint_c,wind_dir_degrees,wind_speed_kt,wind_gust_kt,visibility_statute_mi,altim_in_hg,sea_level_pressure_mb,corrected,auto,auto_station,maintenance_indicator_on,no_signal,lightning_sensor_off,freezing_rain_sensor_off,present_weather_sensor_off,wx_string,sky_cover,cloud_base_ft_agl,sky_cover,cloud_base_ft_agl,sky_cover,cloud_base_ft_agl,sky_cover,cloud_base_ft_agl,flight_category,three_hr_pressure_tendency_mb,maxT_c,minT_c,maxT24hr_c,minT24hr_c,precip_in,pcp3hr_in,pcp6hr_in,pcp24hr_in,snow_in,vert_vis_ft,metar_type,elevation_m
 EHLW 270055Z AUTO 26004KT 9999 BKN096 OVC110 05/04 Q1031 BLU,EHLW,2019-03-27T00:55:00Z,53.22,5.75,5.0,4.0,260,4,,6.21,30.442913,,,TRUE,,,,,,,,BKN,9600,OVC,11000,,,,,VFR,,,,,,,,,,,,METAR,2.0
 EHGR 270055Z AUTO 28003KT 240V310 9999 OVC046 06/05 Q1032 BLU,EHGR,2019-03-27T00:55:00Z,51.57,4.92,6.0,5.0,280,3,,6.21,30.47244,,,TRUE,,,,,,,,OVC,4600,,,,,,,VFR,,,,,,,,,,,,METAR,13.0
 EHDL 270055Z AUTO 00000KT 6000 R20/1800D BR BKN010 BKN013 OVC360 01/00 Q1031 GRN,EHDL,2019-03-27T00:55:00Z,52.07,5.87,1.0,0.0,0,0,,3.73,30.442913,,,TRUE,,,,,,,BR,BKN,1000,BKN,1300,OVC,36000,,,MVFR,,,,,,,,,,,,METAR,52.0
