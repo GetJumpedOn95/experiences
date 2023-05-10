@@ -1,3 +1,4 @@
+import Foundation
 import Scenes
 import Igis
 
@@ -7,9 +8,25 @@ import Igis
 
 
 class Background : RenderableEntity {
+    let mapImage : Image
+    init() {
+            guard let mapURL = URL(string:"/home/brayden-edington/Experiences/W2654_b/Sources/ScenesShell/map.jpeg") else {
+                            fatalError("Failed to create URL for whitehouse")
+                                    }
+                                            mapImage = Image(sourceURL:mapURL)
 
-      init() {
           // Using a meaningful name can be helpful for debugging
           super.init(name:"Background")
       }
+
+override func setup(canvasSize:Size, canvas:Canvas) {
+            canvas.setup(mapImage)
+}
+
+override func render(canvas:Canvas) {
+   if mapImage.isReady {
+       canvas.render(mapImage)
+       mapImage.renderMode = .destinationPoint(Point(x:100, y:200))
+   }
+}
 }
