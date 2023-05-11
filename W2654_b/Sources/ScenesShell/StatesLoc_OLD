@@ -1,0 +1,66 @@
+import Foundation
+import CoreFoundation
+
+var statesLoc: [StateLoc] = []
+func readFile(filename:String) -> Array<Substring> {
+
+    //Read in the file
+    let contents = try! String(contentsOfFile: filename)
+
+    //Split the file on endline (\n)
+    let lines = contents.split(separator:"\n")
+
+    print("Num words: \(lines.count)")
+    return lines
+}
+
+func appendFile(filename:String, runTime:Double) {
+  var contents : String = String(format: "%f", runTime)
+  contents = contents + "\n"
+  guard let data = contents.data(using:String.Encoding.utf8) else {return}
+  let filePath = getDocumentsDirectory().appendingPathComponent(filename)
+//  print("writing \(contents) to \(filePath)")
+  if let fileHandle = try? FileHandle(forWritingTo: filePath) {
+                fileHandle.seekToEndOfFile()
+                fileHandle.write(data)
+                fileHandle.closeFile()
+   }
+}
+
+func getDocumentsDirectory() -> URL {
+  let fileURL: URL = URL(fileURLWithPath: "./")
+  return fileURL
+}
+
+func convertToStateLoc(components:[String]) -> StateLoc {
+    let stateLoc: StateLoc = StateLoc(state:components[0], lat:components[1], long:components[2])
+    return cwstateLoc
+}
+
+func readInData() {
+
+var filename = "states.csv"
+//Arrary of Substrings
+var lines = readFile(filename:filename)
+
+//Convert list of metars
+for line  in lines {
+    let components = line.components(separatedBy: ",")
+     
+    //Verify the components match the headings
+    if headings.count != components.count {
+        print("Components did not have enough values: \(components)")
+    }else{
+        let stateLoc: StateLoc = convertToStateLoc(components:components)
+            statesLoc.append(stateLoc)
+        }
+    }
+}
+
+//Print results
+for stateLoc in statesLoc {
+    print(stateLoc)
+}
+
+
+}

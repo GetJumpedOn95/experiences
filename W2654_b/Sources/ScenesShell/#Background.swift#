@@ -54,41 +54,11 @@ override func render(canvas:Canvas) {
        canvas.render(stationText)   
 
        //Montana
-       canvas.render(FillStyle(color:Color(.black)))
-       xVal += 220
+       xVal =+ 220
        ellipse = createEllipse(xVal:xVal, yVal:yVal)
        text = createText(xVal:xVal, yVal:yVal, temp:stateMetars["Montana"]!.temp_c!)
        station = createRectangle(xVal:xVal+10, yVal:yVal-10)
-       stationText = createStationText(xVal:xVal+10, yVal:yVal-10, text:stateMetars["Montana"]!.station_id!)
-       canvas.render(ellipse)   
-       canvas.render(text)   
-       canvas.render(station)
-       canvas.render(stationText)   
-
-       draw = true
-   }
-}
-
-func createEllipse(xVal:Int, yVal:Int) -> Ellipse {
-      var ellipse = Ellipse(center:Point(x:xVal, y:yVal), radiusX:20, radiusY:20)
-      return ellipse
-}
-
-
-func createText(xVal:Int, yVal:Int, temp:Float) -> Text {
-      var text = Text(location:Point(x:xVal-10, y:yVal), text:String(temp))   
-      text.font = "10pt Arial" 
-      return text
-}
-
-func createStationText(xVal:Int, yVal:Int, text:String) -> Text {
-      var text = Text(location:Point(x:xVal-10, y:yVal), text:text)   
-      text.font = "10pt Arial" 
-      return text
-}
-
-func createRectangle(xVal:Int, yVal:Int) -> Rectangle {
-        let rect = Rect(topLeft:Point(x:xVal, y:yVal), size:Size(width:25, height:15))
+       stationText = createStationText(xVal:xVal+10, yVal:yVal-10, text:stateMetars["Montana"e:Size(width:25, height:15))
         let rectangle = Rectangle(rect:rect, fillMode:.stroke)
       return rectangle
 }

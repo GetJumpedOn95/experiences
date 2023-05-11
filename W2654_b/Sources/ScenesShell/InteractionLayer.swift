@@ -10,7 +10,7 @@ import Foundation
 
 class InteractionLayer : Layer {
 
-      var defaultCanvas: Canvas = Canvas()
+      //var defaultCanvas: Canvas = Canvas( opaque: true, colorMode: .linear, rendersAsynchronously: false)
       var defaultCanvasSize: Size = Size() 
       init() {
           // Using a meaningful name can be helpful for debugging
@@ -19,20 +19,20 @@ class InteractionLayer : Layer {
           // We insert our RenderableEntities in the constructor
 
           //Get state data
-       var stateLocs : [StateLoc] = getStateData()
-       var metars : [Metar] = getMetarData()
-       var newStateLoc : [String : Metar] = getNewStateData(stateLocs:stateLocs, metars:metars)
-       print("\(newStateLoc.count)")
+//       var stateLocs : [StateLoc] = getStateData()
+//       var metars : [Metar] = getMetarData()
+//       var newStateLoc : [String : Metar] = getNewStateData(stateLocs:stateLocs, metars:metars)
+//       print("\(newStateLoc.count)")
       }
       override func preSetup(canvasSize: Size, canvas: Canvas) {
           defaultCanvasSize = canvasSize
-          defaultCanvas = canvas
+        //  defaultCanvas = canvas
           print("setup canvas")
                   let ellipse = Ellipse(center:Point(x:155, y:200), radiusX:120, radiusY:55)
                                 canvas.render(ellipse)
       }
 
-      func getNewStateData(stateLocs:[StateLoc], metars:[Metar]) -> [String : Metar] {
+  /*    func getNewStateData(stateLocs:[StateLoc], metars:[Metar]) -> [String : Metar] {
           var stateMetar =  [String : Metar]() 
         for stateLoc in stateLocs {
             for metar in metars {
@@ -46,7 +46,7 @@ class InteractionLayer : Layer {
         } 
         return stateMetar
     }
-/*
+
       override func render(canvas:Canvas){
           if let defaultCanvasSize = canvas.canvasSize, !didDraw {
               let fillStyle = FillStyle(color:Color(.tan))
@@ -71,7 +71,7 @@ class InteractionLayer : Layer {
           }
       
 
-               */
+        
       func getMetarData() -> [Metar] {
 
           var metarList : [Metar] = []
@@ -121,4 +121,5 @@ class InteractionLayer : Layer {
           }
           return statesLoc
       }
+      */
 }
