@@ -29,8 +29,11 @@ override func setup(canvasSize:Size, canvas:Canvas) {
 }
 
 override func render(canvas:Canvas) {
-   if mapImage.isReady {
-    //   mapImage.renderMode = .destinationPoint(Point(x:0, y:0))
+   if let canvasSize = canvas.canvasSize, mapImage.isReady {
+       let destinationRect = Rect(topLeft:Point(x:0, y:0), size:Size(width:canvasSize.width, height:canvasSize.height))
+       mapImage.renderMode = .destinationRect(Rect(topLeft:Point(x:0, y:0),  size:Size(width:canvasSize.width, height:canvasSize.height)))
+   // mapImage.resizable()
+  //      .aspectRatio(contentMode: .fill)
        canvas.render(mapImage)
    }
 }
