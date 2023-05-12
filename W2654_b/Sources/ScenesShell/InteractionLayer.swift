@@ -97,7 +97,7 @@ class InteractionLayer : Layer {
           //Split the file on endline (\n)
           let lines = contents.split(separator:"\n")
 
-          print("Num words: \(lines.count)")
+          //print("Num words: \(lines.count)")
           return lines
       }
 
@@ -116,9 +116,9 @@ class InteractionLayer : Layer {
 
 
           //Print results
-          for stateLoc in statesLoc {
-              print(stateLoc)
-          }
+         // for stateLoc in statesLoc {
+       //       print(stateLoc)
+         // }
           return statesLoc
       }
       */
