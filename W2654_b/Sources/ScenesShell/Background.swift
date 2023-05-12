@@ -272,6 +272,97 @@ override func render(canvas:Canvas) {
        canvas.render(station)
        canvas.render(FillStyle(color:Color(.blue)))
        canvas.render(stationText)   
+
+       //New Jersey
+       canvas.render(FillStyle(color:Color(.black)))
+       stateName = "New Jersey"
+       xVal = calcX(xVal:xVal, incX:-90)
+       yVal = calcY(yVal:yVal, incY:75)
+       ellipse = createEllipse(xVal:xVal, yVal:yVal)
+       text = createText(xVal:xVal, yVal:yVal, temp:stateMetars[stateName]!.temp_c!)
+       station = createRectangle(xVal:xVal, yVal:yVal)
+       stationText = createStationText(xVal:xVal, yVal:yVal, text:stateMetars[stateName]!.station_id!)
+       canvas.render(ellipse)   
+       canvas.render(FillStyle(color:Color(.black)))
+       canvas.render(text)   
+       canvas.render(station)
+       canvas.render(FillStyle(color:Color(.blue)))
+       canvas.render(stationText)   
+       //Penn
+       canvas.render(FillStyle(color:Color(.black)))
+       stateName = "Pennsylvania"
+       xVal = calcX(xVal:xVal, incX:-90)
+       yVal = calcY(yVal:yVal, incY:-60)
+       ellipse = createEllipse(xVal:xVal, yVal:yVal)
+       text = createText(xVal:xVal, yVal:yVal, temp:stateMetars[stateName]!.temp_c!)
+       station = createRectangle(xVal:xVal, yVal:yVal)
+       stationText = createStationText(xVal:xVal, yVal:yVal, text:stateMetars[stateName]!.station_id!)
+       canvas.render(ellipse)   
+       canvas.render(FillStyle(color:Color(.black)))
+       canvas.render(text)   
+       canvas.render(station)
+       canvas.render(FillStyle(color:Color(.blue)))
+       canvas.render(stationText)   
+       //Ohio
+       canvas.render(FillStyle(color:Color(.black)))
+       stateName = "Ohio"
+       xVal = calcX(xVal:xVal, incX:-150)
+       yVal = calcY(yVal:yVal, incY:50)
+       ellipse = createEllipse(xVal:xVal, yVal:yVal)
+       text = createText(xVal:xVal, yVal:yVal, temp:stateMetars[stateName]!.temp_c!)
+       station = createRectangle(xVal:xVal, yVal:yVal)
+       stationText = createStationText(xVal:xVal, yVal:yVal, text:stateMetars[stateName]!.station_id!)
+       canvas.render(ellipse)   
+       canvas.render(FillStyle(color:Color(.black)))
+       canvas.render(text)   
+       canvas.render(station)
+       canvas.render(FillStyle(color:Color(.blue)))
+       canvas.render(stationText)   
+       //Indiana
+       canvas.render(FillStyle(color:Color(.black)))
+       stateName = "Indiana"
+       xVal = calcX(xVal:xVal, incX:-150)
+       yVal = calcY(yVal:yVal, incY:50)
+       ellipse = createEllipse(xVal:xVal, yVal:yVal)
+       text = createText(xVal:xVal, yVal:yVal, temp:stateMetars[stateName]!.temp_c!)
+       station = createRectangle(xVal:xVal, yVal:yVal)
+       stationText = createStationText(xVal:xVal, yVal:yVal, text:stateMetars[stateName]!.station_id!)
+       canvas.render(ellipse)   
+       canvas.render(FillStyle(color:Color(.black)))
+       canvas.render(text)   
+       canvas.render(station)
+       canvas.render(FillStyle(color:Color(.blue)))
+       canvas.render(stationText)   
+       //Illinois
+       canvas.render(FillStyle(color:Color(.black)))
+       stateName = "Illinois"
+       xVal = calcX(xVal:xVal, incX:-50)
+       yVal = calcY(yVal:yVal, incY:-75)
+       ellipse = createEllipse(xVal:xVal, yVal:yVal)
+       text = createText(xVal:xVal, yVal:yVal, temp:stateMetars[stateName]!.temp_c!)
+       station = createRectangle(xVal:xVal, yVal:yVal)
+       stationText = createStationText(xVal:xVal, yVal:yVal, text:stateMetars[stateName]!.station_id!)
+       canvas.render(ellipse)   
+       canvas.render(FillStyle(color:Color(.black)))
+       canvas.render(text)   
+       canvas.render(station)
+       canvas.render(FillStyle(color:Color(.blue)))
+       canvas.render(stationText)   
+       //Iowa
+       canvas.render(FillStyle(color:Color(.black)))
+       stateName = "Iowa"
+       xVal = calcX(xVal:xVal, incX:-100)
+       yVal = calcY(yVal:yVal, incY:10)
+       ellipse = createEllipse(xVal:xVal, yVal:yVal)
+       text = createText(xVal:xVal, yVal:yVal, temp:stateMetars[stateName]!.temp_c!)
+       station = createRectangle(xVal:xVal, yVal:yVal)
+       stationText = createStationText(xVal:xVal, yVal:yVal, text:stateMetars[stateName]!.station_id!)
+       canvas.render(ellipse)   
+       canvas.render(FillStyle(color:Color(.black)))
+       canvas.render(text)   
+       canvas.render(station)
+       canvas.render(FillStyle(color:Color(.blue)))
+       canvas.render(stationText)   
       // print("\(canvas.canvasSize)")
        draw = true
    }
@@ -347,7 +438,7 @@ func getNewStateData(stateLocs:[StateLoc], metars:[Metar]) -> [String : Metar] {
 func getMetarData() -> [Metar] {
 
     var metarList : [Metar] = []
-    var filename = "Example-metars.csv"
+    let filename = "Example-metars.csv"
     let lines = readFile(filename:filename)
     //Convert list of metars
     for line  in lines {
@@ -375,7 +466,7 @@ func readFile(filename:String) -> Array<Substring> {
 
 func getStateData() -> [StateLoc] {
     var statesLoc: [StateLoc] = []
-    var filename = "state.csv"
+    let filename = "state.csv"
     //Arrary of Substrings
     let lines = readFile(filename:filename)
 
